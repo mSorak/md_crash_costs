@@ -20,3 +20,8 @@ dist/
 # IDE
 .vscode/
 .idea/
+
+# Internal dev notes (not published)
+DESIGN.md
+data_point_list.md
+*.tsbuildinfo

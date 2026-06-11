@@ -1,47 +1,9 @@
-# ── Python / Node / IDE ──────────────────────────────────────────────
-__pycache__/
-*.py[cod]
-.venv/
-venv/
-.env
-.env.*
-node_modules/
-dist/
-.vite/
-*.log
-*.tsbuildinfo
-.vscode/
-.idea/
-.DS_Store
-Thumbs.db
+# App-only public repo — ignore everything outside crash_cost_app/
+/*
+!/.gitignore
+!/README.md
+!/crash_cost_app/
 
-# ── Internal dev notes (not for the public repo) ─────────────────────
-prompts/
-report_notes.md
-crash_cost_app/DESIGN.md
-crash_cost_app/data_point_list.md
-data/VEHICLE_LINKAGE_AUDIT.md
-FLY_DEPLOY.md
-
-# ── Accidental / junk ────────────────────────────────────────────────
-*.exe
-acrsfieldreference.pdf
-/package-lock.json
-
-# ── Large source data (see data/DATA.md to reproduce) ────────────────
-data/Reports/
-data/Vehicles/
-data/Occupants/
-data/NonMotorists/
-data/crash_cost_eval.csv
-data/census/*.zip
-data/census/tl2024_shapes_cache/
-data/census/nhgis*/
-data/geo_summaries/*.csv
-
-# NHTSA report PDF — cite the publication URL instead of committing
-*.pdf
-
-# ── Web app generated artifacts ──────────────────────────────────────
+# Still ignore generated/large artifacts inside crash_cost_app
 crash_cost_app/data_cache/*
 !crash_cost_app/data_cache/README.md

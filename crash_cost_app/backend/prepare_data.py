@@ -18,6 +18,7 @@ All paths are resolved relative to this file so cwd does not matter.
 from __future__ import annotations
 
 import json
+import os
 from pathlib import Path
 
 import geopandas as gpd
@@ -25,8 +26,15 @@ import pandas as pd
 
 HERE = Path(__file__).resolve().parent
 APP_ROOT = HERE.parent
-PROJECT_ROOT = APP_ROOT.parent
-DATA_DIR = PROJECT_ROOT / "data"
+_default_data = APP_ROOT.parent / "data"
+_monorepo_data = APP_ROOT.parent.parent / "data"
+_env_data = os.environ.get("CRASH_COST_DATA_DIR")
+if _env_data:
+    DATA_DIR = Path(_env_data)
+elif _default_data.is_dir():
+    DATA_DIR = _default_data
+else:
+    DATA_DIR = _monorepo_data
 CACHE = APP_ROOT / "data_cache"
 GEO_CACHE = CACHE / "geo"
 
