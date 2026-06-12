@@ -44,6 +44,17 @@ GEO_SUMMARY_DIR = DATA_DIR / "geo_summaries"
 
 MD_STATEFP = "24"
 
+
+def _format_geo_name(name: str | None) -> str | None:
+    """Census NAMELSAD uses 'Baltimore city'; display as 'Baltimore City'."""
+    if name is None or (isinstance(name, float) and pd.isna(name)):
+        return None
+    s = str(name)
+    if s == "Baltimore city":
+        return "Baltimore City"
+    return s
+
+
 COST_COMPONENTS = [
     "Medical",
     "EMS",
@@ -182,6 +193,9 @@ def prepare_crashes() -> pd.DataFrame:
     df["lat"] = df["Latitude"].astype("float32")
     df["lon"] = df["Longitude"].astype("float32")
 
+    if "NAME_county" in df.columns:
+        df["NAME_county"] = df["NAME_county"].map(_format_geo_name)
+
     df["cost_total"] = df[_cost_col("TotalComp")].astype("float32")
     for comp in COST_COMPONENTS:
         df[f"cost_{comp.lower()}"] = df[_cost_col(comp)].astype("float32")
@@ -283,7 +297,7 @@ def prepare_geojson(
     gdf["geometry"] = gdf["geometry"].simplify(simplify_tol, preserve_topology=True)
 
     if level == "county":
-        gdf["name"] = gdf["NAMELSAD"]
+        gdf["name"] = gdf["NAMELSAD"].map(_format_geo_name)
         keep_attrs = ["GEOID", "name"]
     elif level == "tract":
         gdf["name"] = gdf["NAMELSAD"]

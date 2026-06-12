@@ -8,7 +8,7 @@ import type { CrashPoint, Level, MetricDef, SummaryFeature } from "../types";
 import { selectionKey } from "../geoSelection";
 import { CRASH_TYPE_COLORS, MARYLAND_INITIAL_VIEW, ZOOM, levelForZoom } from "../config";
 import { buildQuantileScale, colorFor, type Scale } from "../colorScale";
-import { formatMetric } from "../format";
+import { formatGeoName, formatMetric } from "../format";
 import { computeMetricValue } from "../metrics";
 import { normalizeGeoid } from "../summaryCache";
 
@@ -254,7 +254,7 @@ export function MapView({
     onGeoClick({
       level,
       geoid: String(geoid),
-      name: props?.name ?? String(geoid),
+      name: formatGeoName(props?.name ?? String(geoid)),
     });
   }
 
@@ -274,7 +274,7 @@ export function MapView({
     const summary = geoid ? summaryByLevel[level]?.get(geoid) : undefined;
     const html = renderGeoPopup({
       level,
-      name: props?.name ?? geoid ?? "Unknown",
+      name: formatGeoName(props?.name ?? geoid ?? "Unknown"),
       summary,
       metric: metricDef,
     });

@@ -25,8 +25,8 @@ export const siteContent = {
   hero: {
     title: "What do Maryland's crashes cost?",
     intro: [
-      "Marylanders experience around 300 police-reported crashes on their roadways every day. Some of the costs are obvious: deaths, damaged vehicles, emergency response, and traffic congestion. Others are less visible: higher car and health insurance premiums, increased public costs, and temporary or permanent disabilities affecting thousands of people each year. These are costs that all of us share.",
-      "This map estimates the full cost of crashes reported by Maryland police, including the estimated impacts from injuries and loss of life, using [national cost estimates](https://crashstats.nhtsa.dot.gov/Api/Public/ViewPublication/813403) from NHTSA. Explore how the burden varies by county, community, and neighborhood. Filter by date and crash type, compare places in the dashboard below, and zoom in to see individual crashes.",
+      "Marylanders experience around 300 police-reported crashes on their roadways every day. Some of the costs are obvious: deaths, damaged vehicles, emergency response, and traffic congestion. Others are less visible: higher car and health insurance premiums, increased taxes to pay for maitenance, and temporary or permanent disabilities affecting thousands of people each year. These are costs that all of us share.",
+      "This map estimates the full cost of police-reported crashes, including the estimated impacts from injuries and loss of life, using [national cost estimates](https://crashstats.nhtsa.dot.gov/Api/Public/ViewPublication/813403) from NHTSA. Explore how the burden varies by county, community, and neighborhood. Filter by date and crash type, compare places in the dashboard below, and zoom in to see individual crashes.",
     ],
     stats: [
       {

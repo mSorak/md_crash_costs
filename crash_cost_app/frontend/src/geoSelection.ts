@@ -1,3 +1,4 @@
+import { formatGeoName } from "./format";
 import type { GeoLevel, SelectedGeo } from "./types";
 
 export const MARYLAND_STATE_GEOID = "24";
@@ -43,7 +44,7 @@ export function makeSelection(
   geoid: string,
   name: string,
 ): SelectedGeo {
-  return { key: selectionKey(level, geoid), level, geoid, name };
+  return { key: selectionKey(level, geoid), level, geoid, name: formatGeoName(name) };
 }
 
 export function isSameSelection(a: SelectedGeo, b: SelectedGeo): boolean {

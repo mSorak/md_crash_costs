@@ -14,6 +14,7 @@ import { StatusPanel } from "./components/StatusPanel";
 import { aboutContent } from "./content/about";
 import { methodologyContent } from "./content/methodology";
 import { siteContent } from "./content/site";
+import { formatGeoName } from "./format";
 import { colorForSelection } from "./geoColors";
 import {
   MARYLAND_BASELINE,
@@ -101,7 +102,7 @@ export function App() {
       );
       if (!feat) return null;
       const props = feat.properties as { name?: string; NAMELSAD?: string };
-      return props?.name ?? props?.NAMELSAD ?? geoid;
+      return formatGeoName(props?.name ?? props?.NAMELSAD ?? geoid);
     },
     [geoByLevel],
   );

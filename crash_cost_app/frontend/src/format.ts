@@ -1,5 +1,12 @@
 import type { MetricDef } from "./types";
 
+/** Census NAMELSAD uses "Baltimore city"; display as "Baltimore City" like other counties. */
+export function formatGeoName(name: string | null | undefined): string {
+  if (!name) return "";
+  if (name === "Baltimore city") return "Baltimore City";
+  return name;
+}
+
 const currencyFmt = new Intl.NumberFormat("en-US", {
   style: "currency",
   currency: "USD",
